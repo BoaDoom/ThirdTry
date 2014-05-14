@@ -1,4 +1,5 @@
 package cardGameV3.Cards;
+import cardGameV3.DeckOfCards;
 import cardGameV3.Players;
 import cardGameV3.SingleCards;
 
@@ -12,7 +13,7 @@ public class Guard extends SingleCards{
 		valueOfCard = 1;
 		nameOfCard = "Guard";
 	}
-	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer)
+	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
 	{		
 		System.out.println("Player " + AttackingPlayer.playerName + ", what card do you think Player " + DefendingPlayer.playerName + "\nhas in his hand? Here is a listing of the cards\nOnce you decide you must announce it before entering it");
 		System.out.println("\n1.Guard INVALID You cannot choose a guard to attack a guard" + "\n2.Priest" + "\n3.Baron" + "\n4.Handmaid" + "\n5.Prince" + "\n6.King" + "\n7.Countess" + "\n8.Princess");

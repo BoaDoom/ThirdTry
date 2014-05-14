@@ -6,6 +6,7 @@ public class Players {
 	//hopefully will store cards for comparison, keep score and do the comparisons
 	static int winCondition = 0;
 	public SingleCards cardA;
+	public SingleCards cardB;
 	SingleCards playedCard;
 	int nextCard = 0;
 	int playerScore = 0;
@@ -48,8 +49,9 @@ public class Players {
 	}
 	
 	
-	public void getNewCard(SingleCards cardB)
+	public void getNewCard(DeckOfCards Deck)
 	{
+		cardB = Deck.dealCard();
 		System.out.println("Your turn player number " + playerName);
 		System.out.println("Which card would you like to play? the other will be kept");
 		System.out.println("1: " + cardA.valueOfCard + " " + cardA.nameOfCard);
@@ -74,27 +76,14 @@ public class Players {
 		System.out.println("The prince has forced you to drop your " + cardA.nameOfCard);
 		
 	}
-	/*
-	public boolean compareCards(Players otherPlayers) //unused card comparer
-	{
-		if (otherPlayers.currentCard < currentCard)
-		{
-			return true;
-		}
-		if (otherPlayers.currentCard == currentCard)
-		{
-			return false;
-		}
-		return false;
-	}
-	*/
+
 	public void scored()
 	{
 		playerScore++;
 	}
-	public void getStartingCard(SingleCards startingCard)
+	public void getStartingCard(DeckOfCards Deck)
 	{
-		cardA = startingCard;
+		cardA = Deck.dealCard();
 	}
 	
 	Players(int playerNameTemp)

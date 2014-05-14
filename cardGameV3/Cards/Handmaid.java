@@ -1,6 +1,7 @@
 package cardGameV3.Cards;
 import java.util.List;
 
+
 import cardGameV3.Players;
 import cardGameV3.SingleCards;
 
@@ -16,12 +17,13 @@ public class Handmaid extends SingleCards{
 	public int checkForAttack(List<Players> AllPlayers, int turnCount)
 	{
 		System.out.println("This card can only be used on yourself, you will become immune to attack until your next turn");
-		return turnCount;
+		AllPlayers.get(turnCount).setBlockedOn();
+		return 0;
 	}
-	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer)
+/*	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
 	{
 		AttackingPlayer.setBlockedOn();
 		return 0;
 	}
-
+*/
 }

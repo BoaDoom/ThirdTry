@@ -1,6 +1,7 @@
 package cardGameV3.Cards;
 
 
+import cardGameV3.DeckOfCards;
 import cardGameV3.Players;
 import cardGameV3.SingleCards;
 
@@ -13,7 +14,7 @@ public class Baron extends SingleCards{
 		valueOfCard = 3;
 		nameOfCard = "Baron";
 	}
-	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer)
+	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
 	{
 	if (AttackingPlayer.cardA.valueOfCard > DefendingPlayer.cardA.valueOfCard)
 	{

@@ -1,7 +1,6 @@
 package cardGameV3;
 
 //import java.util.ArrayList;
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,8 +10,10 @@ public class SingleCards /*invoked by deckofcards object, each individual card m
 Reference with Deck.AllCards.get(i) will access the single cards in order they are created here. 
 Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 {
+	public int singleNonNullPlayer = 0;
 	public int valueOfCard;
 	public int choice;
+	public SingleCards tempCardHolder;
 	public String nameOfCard;
 	public int numberOfNonNullPlayers = 0;
 	protected Scanner keyboard = new Scanner(System.in);
@@ -57,13 +58,14 @@ Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 		}
 		return "UNKNOWN!!";
 	}
-	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer) throws IOException
+	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
 	{		
 		return 0;
 	}
 	
 	public int checkForAttack(List<Players> AllPlayers, int turnCount) //importing all players to check availability for attack with card ability
 	{
+		singleNonNullPlayer = 0;
 		System.out.println("Please pick an availible player you would like to use your card on");
 		for (int i = 0; i < AllPlayers.size(); i++)
 		{
@@ -85,13 +87,22 @@ Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 			else
 			{
 				System.out.println((i+1) + ": Player " + (i+1));
+				singleNonNullPlayer = i; //temp slot in case there is only one viable player to play against
 				numberOfNonNullPlayers++;
 			}
 		}
+		System.out.println();
 		if (numberOfNonNullPlayers == 0)
 		{
 			System.out.println("There is nobody to use this card on, you will have to discard it without effect\n");
 			return 0;
+		}
+		if (numberOfNonNullPlayers == 1)
+		{
+			System.out.println("There is only one person you can use this on, you are forced to play it on player " + (singleNonNullPlayer+1));
+			System.out.println("\npress enter to start this cards action");
+			nonkeyboard.nextLine();
+			return (singleNonNullPlayer+1);
 		}
 			
 		checkingPlayerChoice(AllPlayers, turnCount);
@@ -101,13 +112,13 @@ Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 	
 	public void checkingPlayerChoice(List<Players> AllPlayers, int turnCount) //checking to make sure the selected player is a valid one, both within the player count and active player pool
 	{
-		choice =  keyboard.nextInt() - 1;
-		if (choice < 0 || choice > (AllPlayers.size()-1))
+		choice =  keyboard.nextInt();
+		if ((choice-1) < 0 || (choice-1) > (AllPlayers.size()-1))
 		{
 			System.out.println("That is not close to a valid player selection, please try again\n\n");
 			checkingPlayerChoice(AllPlayers, turnCount);
 		}
-		if ((AllPlayers.get(choice).playerState == 0) || (AllPlayers.get(choice).playerName == AllPlayers.get(turnCount).playerName))
+		if ((AllPlayers.get((choice-1)).playerState == 0) || (AllPlayers.get((choice-1)).playerName == AllPlayers.get(turnCount).playerName))
 		{
 			System.out.println("That is not a valid player selection at this time, please try again\n\n");
 			checkingPlayerChoice(AllPlayers, turnCount);
@@ -117,13 +128,13 @@ Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 	
 	public static void clearingTheScreen()
 	{
-		System.out.println("press enter to clear for next player");
+		System.out.println("\npress enter to clear for next player");
 		nonkeyboard.nextLine();
 		for (int i = 0; i < 10; ++i) System.out.println();
 	}
 	public static void confirmingPlayer(List<Players> AllPlayers, int turnCount)
 	{
-		System.out.println("press enter if you are indeed Player "+ AllPlayers.get(turnCount).playerName + "!");
+		System.out.println("\npress enter if you are indeed Player "+ AllPlayers.get(turnCount).playerName + "!");
 		nonkeyboard.nextLine();
 	}
 	

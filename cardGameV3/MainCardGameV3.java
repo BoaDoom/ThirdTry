@@ -10,6 +10,7 @@ public class MainCardGameV3 {
 	public static void main(String[] args) throws IOException 
 	{
 
+		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
 		int turnCount = 0;
 		int killedPlayers = 0;
@@ -45,11 +46,11 @@ public class MainCardGameV3 {
 			Deck.shuffle(); //shuffling for next hand
 			for (int i = 0; i <numOfPlayers; i++) //first card dealt to all players, plus shows scores
 			{
-				AllPlayers.get(i).getStartingCard(Deck.dealCard());
+				AllPlayers.get(i).getStartingCard(Deck);
 				System.out.println("Player " + (i+1) + "'s score is " + AllPlayers.get(i).playerScore);
 				AllPlayers.get(i).setPlayerStateOn(); //reactivates all players state
 			}
-			System.out.println("Play till " + winCondition + "\n");
+			System.out.println("Play until " + winCondition + "\n");
 			
 			
 			while (Deck.cardsDealt < DeckOfCards.cardCount - 1) //Smaller hand dealing Loop. deals until all cards are gone
@@ -58,9 +59,13 @@ public class MainCardGameV3 {
 				{
 					SingleCards.confirmingPlayer(AllPlayers, turnCount);
 					AllPlayers.get(turnCount).setBlockedOff(); //switches back to on in case handmaiden activation previous turn
-					AllPlayers.get(turnCount).getNewCard(Deck.dealCard());//activates the choosing of the card, returns the card that was played
-					cardAttack = AllPlayers.get(turnCount).playedCard.checkForAttack(AllPlayers, turnCount); //choosing who to play the card against
-					killedPlayers = killedPlayers + AllPlayers.get(turnCount).playedCard.attackWithCard(AllPlayers.get(turnCount), AllPlayers.get(cardAttack)); //uses the played cards ability, putting the two players head to head. Returns 1 if knocked out
+					AllPlayers.get(turnCount).getNewCard(Deck);//activates the choosing of the card, returns the card that was played
+					cardAttack = AllPlayers.get(turnCount).playedCard.checkForAttack(AllPlayers, turnCount); //choosing who to play the card against. cardAttack is the player number chosen
+					if (cardAttack != 0)
+					{
+					killedPlayers = killedPlayers + AllPlayers.get(turnCount).playedCard.attackWithCard(AllPlayers.get(turnCount), AllPlayers.get(cardAttack-1), Deck); //uses the played cards ability, putting the two players head to head. Returns 1 if knocked out
+					}
+
 				}
 
 					turnCount++;
