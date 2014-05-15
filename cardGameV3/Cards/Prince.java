@@ -19,6 +19,14 @@ public class Prince extends SingleCards{
 	{
 		System.out.println("You've forced Player " + DefendingPlayer.playerName + " to discard his card!\nPress enter when ready and pass to him so he can draw a new card");
 		clearingTheScreen();
+		if (DefendingPlayer.cardA.valueOfCard == 8)
+		{
+			System.out.println("You've been forced to discard the Princess, you are now out of this round");
+			DefendingPlayer.setPlayerStateOff();
+			return 1;
+		}
+		else
+		{
 		System.out.println("The prince has forced you to lose your card, press enter to recieve a new card if you are indeed Player "+ DefendingPlayer.playerName);
 		nonkeyboard.nextLine();
 		if (Deck.cardsDealt == DeckOfCards.cardCount - 1)
@@ -32,6 +40,7 @@ public class Prince extends SingleCards{
 		DefendingPlayer.getStartingCard(Deck);
 		System.out.println("You now have a " + nameThisCard(DefendingPlayer.cardA.valueOfCard) + ", a " + DefendingPlayer.cardA.valueOfCard);
 		return 0;
+		}
 		}
 	}
 	
