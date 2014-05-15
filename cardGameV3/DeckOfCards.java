@@ -46,11 +46,8 @@ public class DeckOfCards //name of object is Deck
 			AllCards.add(AllCards.get(pickedCardNumber)); //assigns random card from AllCards list to end of the list
 			AllCards.remove(pickedCardNumber); //removes the card from the list so it wont get picked again
 		}
-		cardsDealt = 0; //starts at 0, meaning first card drawn will be the second in the array, the very first card will be the burn/hidden card
-		if (numOfPlayers == 2)
-		{
-			cardsDealt = cardsDealt + 3; //adds one onto each of the burn cards for a 2 player game. Burn cards are now AllCards.get(1-3)
-		}
+		cardsDealt = -1;
+
     }
     public void setPlayerCount(int playerCount)
     {

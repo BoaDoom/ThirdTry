@@ -1,5 +1,5 @@
 package cardGameV3;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class MainCardGameV3 {
 	public static final int MINIMUM_NUM_PLAYERS = 2;
 	public static final int MAXIMUM_NUM_PLAYERS = 4;
-	public static void main(String[] args) throws IOException 
+	public static void main(String[] args)
 	{
 
 		@SuppressWarnings("resource")
@@ -32,6 +32,7 @@ public class MainCardGameV3 {
 		}
 		winCondition = Players.setWinCondition(numOfPlayers); //sets win condition according to an inexact formula according to amount of players
 		DeckOfCards Deck = new DeckOfCards(); //makes a deck object
+		TableTop Table;// = new TableTop(numOfPlayers, Deck); //makes a table object to store discards/burns/hidden
 		Deck.setPlayerCount(numOfPlayers);
 		List<Players> AllPlayers = new ArrayList<Players>(); //creates a list of player objects
 		for (int i = 0; i < numOfPlayers; i++)
@@ -47,6 +48,7 @@ public class MainCardGameV3 {
 			killedPlayers = 0;
 			turnCount = 0; //resetting the turn counter
 			Deck.shuffle(); //shuffling for next hand
+			Table(numOfPlayers, Deck);
 			for (int i = 0; i <numOfPlayers; i++) //first card dealt to all players, plus shows scores
 			{
 				AllPlayers.get(i).getStartingCard(Deck);
