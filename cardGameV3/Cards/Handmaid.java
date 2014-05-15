@@ -13,10 +13,11 @@ public class Handmaid extends SingleCards{
 		super();
 		valueOfCard = 4;
 		nameOfCard = "Handmaid";
+		descriptionOfCard = "This card is played on yourself, it makes you immune to attack until your next turn";
 	}
 	public int checkForAttack(List<Players> AllPlayers, int turnCount)
 	{
-		System.out.println("This card can only be used on yourself, you will become immune to attack until your next turn");
+		System.out.println("This card is used on yourself, you are immune to attack until your next turn");
 		AllPlayers.get(turnCount).setBlockedOn();
 		return 0;
 	}

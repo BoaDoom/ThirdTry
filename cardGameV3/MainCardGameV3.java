@@ -57,9 +57,10 @@ public class MainCardGameV3 {
 			{
 				if (AllPlayers.get(turnCount).playerState != 0) //checks to see if player is out of hand to skip if needed
 				{
-					SingleCards.confirmingPlayer(AllPlayers, turnCount);
-					AllPlayers.get(turnCount).setBlockedOff(); //switches back to on in case handmaiden activation previous turn
-					AllPlayers.get(turnCount).getNewCard(Deck);//activates the choosing of the card, returns the card that was played
+					SingleCards.confirmingPlayer(AllPlayers, turnCount); //message to confirm that the correct player is looking at the screen
+					AllPlayers.get(turnCount).setBlockedOff(); //switches back to off in case handmaiden activation previous turn
+					AllPlayers.get(turnCount).getNewCard(Deck);//activates the drawing of a card to cardB variable
+					AllPlayers.get(turnCount).chooseCard();
 					cardAttack = AllPlayers.get(turnCount).playedCard.checkForAttack(AllPlayers, turnCount); //choosing who to play the card against. cardAttack is the player number chosen
 					if (cardAttack != 0)
 					{

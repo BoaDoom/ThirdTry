@@ -12,6 +12,7 @@ public class King extends SingleCards{
 		super();
 		valueOfCard = 6;
 		nameOfCard = "King";
+		descriptionOfCard = "This card is played on another player, it forces them to swap their current hand with yours";
 	}
 	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
 	{

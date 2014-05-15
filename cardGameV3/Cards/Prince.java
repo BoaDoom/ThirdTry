@@ -13,6 +13,7 @@ public class Prince extends SingleCards{
 		super();
 		valueOfCard = 5;
 		nameOfCard = "Prince";
+		descriptionOfCard = "This card is played on another player or yourself, it forces the selected player to discard their current card and draw another right away";
 	}
 	
 	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)

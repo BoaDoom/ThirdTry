@@ -15,6 +15,7 @@ Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 	public int choice;
 	public SingleCards tempCardHolder;
 	public String nameOfCard;
+	public String descriptionOfCard;
 	public int numberOfNonNullPlayers = 0;
 	protected Scanner keyboard = new Scanner(System.in);
 	protected static Scanner nonkeyboard = new Scanner(System.in);
@@ -101,7 +102,7 @@ Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 		if (numberOfNonNullPlayers == 1)
 		{
 			System.out.println("There is only one person you can use this on, you are forced to play it on player " + (singleNonNullPlayer+1));
-			System.out.println("\npress enter to start this cards action");
+			System.out.println("press enter to start this cards action");
 			nonkeyboard.nextLine();
 			return (singleNonNullPlayer+1);
 		}

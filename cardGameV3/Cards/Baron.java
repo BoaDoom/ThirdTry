@@ -13,6 +13,7 @@ public class Baron extends SingleCards{
 		super();
 		valueOfCard = 3;
 		nameOfCard = "Baron";
+		descriptionOfCard = "This card is played on another player, it forces you to compare hands, highest card in their hand when played, wins, the loser is out of the round";
 	}
 	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
 	{
@@ -27,7 +28,7 @@ public class Baron extends SingleCards{
 	if (AttackingPlayer.cardA.valueOfCard < DefendingPlayer.cardA.valueOfCard)
 	{
 		System.out.println("Player " + DefendingPlayer.playerName + " has the higher card with the " + nameThisCard(DefendingPlayer.cardA.valueOfCard)+ ", the " + DefendingPlayer.cardA.valueOfCard 
-				+ "\nversus Player" +  AttackingPlayer.playerName + "'s " +nameThisCard(AttackingPlayer.cardA.valueOfCard) +  ", a " + AttackingPlayer.cardA.valueOfCard);
+				+ "\nversus Player " +  AttackingPlayer.playerName + "'s " +nameThisCard(AttackingPlayer.cardA.valueOfCard) +  ", a " + AttackingPlayer.cardA.valueOfCard);
 		System.out.println("You should announce to everyone the value of which card was beaten");
 		AttackingPlayer.setPlayerStateOff();
 		return 1;

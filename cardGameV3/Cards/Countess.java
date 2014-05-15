@@ -12,11 +12,12 @@ public class Countess extends SingleCards{
 	{
 		super();
 		valueOfCard = 7;
-		nameOfCard = "Countess";		
+		nameOfCard = "Countess";
+		descriptionOfCard = "This card has no playable ability if used, she will simply be discarded.\n                    If at any point in the game she is in your hand with either the King or the Prince, she will\n                    be forced out of your hand without choice, leaving you with the Prince or King and ending your turn";
 	}
 	public int checkForAttack(List<Players> AllPlayers, int turnCount) //importing all players to check availability for attack with card ability
 	{
-		System.out.println("The countess has no attack, you discard her at your discretion without penalty");
+		System.out.println("The countess has no ability, you discard her without penalty");
 		return 0;
 	}
 

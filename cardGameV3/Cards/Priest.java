@@ -14,6 +14,7 @@ public class Priest extends SingleCards{
 		super();
 		valueOfCard = 2;
 		nameOfCard = "Priest";
+		descriptionOfCard = "This card is played on another player, it forces them to show you their current card";
 	}
 	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
 	{

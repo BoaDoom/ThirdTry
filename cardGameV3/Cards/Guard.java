@@ -12,6 +12,8 @@ public class Guard extends SingleCards{
 		super();
 		valueOfCard = 1;
 		nameOfCard = "Guard";
+		descriptionOfCard = "This card is played on another player, if you can then guess the other players current hand, they are knocked out!";
+				
 	}
 	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
 	{		
