@@ -15,6 +15,7 @@ public class Players {
 	public int playerState = 0; //false is out of round, true is in
 	public int blocked = 0; //handmaiden activation
 	public int savedCardValue = 0;
+	int cardChoice = 0;
 
 	Scanner keyboard = new Scanner(System.in);
 	
@@ -52,17 +53,32 @@ public class Players {
 	public void getNewCard(DeckOfCards Deck)
 	{
 		cardB = Deck.dealCard();
-		System.out.println("Your turn player number " + playerName);
-		System.out.println("Which card would you like to play? the other will be kept");
-		System.out.println("1: " + cardA.valueOfCard + " " + cardA.nameOfCard);
-		System.out.println("2: " + cardB.valueOfCard + " " + cardB.nameOfCard);
-		int cardChoice = keyboard.nextInt();
-		while (cardChoice != 1 && cardChoice != 2)
+		if ((cardB.valueOfCard == 7 || cardA.valueOfCard == 7) && ((cardA.valueOfCard == 6 || cardA.valueOfCard == 5) || (cardB.valueOfCard == 6 || cardB.valueOfCard == 5)))
 		{
-			System.out.println("please choose option 1 or 2");
-			cardChoice = keyboard.nextInt();
+			System.out.println("You've got a Countess and a King/Prince in your hand! She flees and you can't stop her");
+			if (cardA.valueOfCard == 7) //auto setting the 'played' or discard to the countess
+			{
+				cardChoice = 1; 
+			}
+			else
+			{
+				cardChoice = 2;
+			}
 		}
-		playedCard = cardB; //card assigned for being activated and used
+		else
+		{
+			System.out.println("Your turn player number " + playerName);
+			System.out.println("Which card would you like to play? the other will be kept");
+			System.out.println("1: " + cardA.valueOfCard + " " + cardA.nameOfCard);
+			System.out.println("2: " + cardB.valueOfCard + " " + cardB.nameOfCard);
+			cardChoice = keyboard.nextInt();
+			while (cardChoice != 1 && cardChoice != 2)
+			{
+				System.out.println("please choose option 1 or 2");
+				cardChoice = keyboard.nextInt();
+			}
+		}
+			playedCard = cardB; //card assigned for being activated and used
 		if (cardChoice == 1)
 		{
 			playedCard = cardA;

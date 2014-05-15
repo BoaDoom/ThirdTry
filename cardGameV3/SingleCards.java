@@ -65,6 +65,7 @@ Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 	
 	public int checkForAttack(List<Players> AllPlayers, int turnCount) //importing all players to check availability for attack with card ability
 	{
+		numberOfNonNullPlayers = 0;
 		singleNonNullPlayer = 0;
 		System.out.println("Please pick an availible player you would like to use your card on");
 		for (int i = 0; i < AllPlayers.size(); i++)
