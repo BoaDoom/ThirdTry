@@ -32,9 +32,8 @@ public class Prince extends SingleCards{
 		nonkeyboard.nextLine();
 		if (Deck.cardsDealt == DeckOfCards.cardCount - 1)
 		{
-			System.out.println("There are no more cards left! you've been knocked out of the round");
-			DefendingPlayer.setPlayerStateOff();
-			return 1;
+			DefendingPlayer.princeDiscardContingency(Deck);
+			return 0;
 		}
 		else
 		{

@@ -54,6 +54,10 @@ public class Players {
 	{
 		cardB = Deck.dealCard();
 	}
+    public void princeDiscardContingency(DeckOfCards Deck) //deals the last burn/hidden card to player when deck is empty
+    {
+    	cardA = Deck.dealLastCard();
+    }
 	
 	public void chooseCard()
 	{

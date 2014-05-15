@@ -18,7 +18,9 @@ public class MainCardGameV3 {
 		int winCount = 0;
 		int playerScoreFirst = 0;
 		int playerScoreSecond = 0;
+		int playerScoreStored = 0;
 		int highCardOwner = 0;
+		int secondHighCardOwner = 0;
 		int cardAttack = 0;
 		System.out.println("How many players? (between " + MINIMUM_NUM_PLAYERS + "-" + MAXIMUM_NUM_PLAYERS + ")"); //asking for the amount of players
 		int numOfPlayers = keyboard.nextInt();
@@ -30,6 +32,7 @@ public class MainCardGameV3 {
 		}
 		winCondition = Players.setWinCondition(numOfPlayers); //sets win condition according to an inexact formula according to amount of players
 		DeckOfCards Deck = new DeckOfCards(); //makes a deck object
+		Deck.setPlayerCount(numOfPlayers);
 		List<Players> AllPlayers = new ArrayList<Players>(); //creates a list of player objects
 		for (int i = 0; i < numOfPlayers; i++)
 		{
@@ -88,18 +91,32 @@ public class MainCardGameV3 {
 			for (int i = 1; i < numOfPlayers; i++) //comparing final cards. Starts with player(0) and then replaces it if the next is higher
 			{
 				playerScoreSecond = AllPlayers.get(i).savedCardValue;
-				if (playerScoreFirst < playerScoreSecond)
+				if (playerScoreFirst <= playerScoreSecond)
 				{
+					playerScoreStored = playerScoreFirst;
 					playerScoreFirst = playerScoreSecond;
+					if (playerScoreFirst == playerScoreStored)
+					{
+						secondHighCardOwner = highCardOwner + 1;
+					}
 					highCardOwner = i;
 				}
+
 			}
-			
-			
+			if (AllPlayers.get(highCardOwner).savedCardValue == AllPlayers.get(secondHighCardOwner).savedCardValue) //contingency for both players having the same value cards at the end of the game
+			{
+				System.out.println("There was a tie! nobody gets points until I fix a card counting thing");
+				System.out.println(AllPlayers.get(highCardOwner).playerName + "with a " + AllPlayers.get(highCardOwner).cardA.nameOfCard);
+				System.out.println(AllPlayers.get(secondHighCardOwner).playerName + "with a " + AllPlayers.get(secondHighCardOwner).cardA.nameOfCard);
+			}
+			else
+			{
+			System.out.println("THE DECK IS OUT OF CARDS! time to compare hands");
 			System.out.println("The winner of this hand is player " + (highCardOwner + 1));
 			System.out.println("with a " + AllPlayers.get(highCardOwner).cardA.nameOfCard);
 			AllPlayers.get(highCardOwner).scored();
 			winCount = AllPlayers.get(highCardOwner).playerScore;
+			}
 		}
 		System.out.println("Congrats to player " + (highCardOwner+1) + ". You've won the game");
 	}
