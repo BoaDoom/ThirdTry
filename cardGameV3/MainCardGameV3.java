@@ -22,6 +22,7 @@ public class MainCardGameV3 {
 		int highCardOwner = 0;
 		int secondHighCardOwner = 0;
 		int cardAttack = 0;
+		
 		System.out.println("How many players? (between " + MINIMUM_NUM_PLAYERS + "-" + MAXIMUM_NUM_PLAYERS + ")"); //asking for the amount of players
 		int numOfPlayers = keyboard.nextInt();
 		while (numOfPlayers < MINIMUM_NUM_PLAYERS || numOfPlayers > MAXIMUM_NUM_PLAYERS)
@@ -32,7 +33,7 @@ public class MainCardGameV3 {
 		}
 		winCondition = Players.setWinCondition(numOfPlayers); //sets win condition according to an inexact formula according to amount of players
 		DeckOfCards Deck = new DeckOfCards(); //makes a deck object
-		TableTop Table;// = new TableTop(numOfPlayers, Deck); //makes a table object to store discards/burns/hidden
+		
 		Deck.setPlayerCount(numOfPlayers);
 		List<Players> AllPlayers = new ArrayList<Players>(); //creates a list of player objects
 		for (int i = 0; i < numOfPlayers; i++)
@@ -48,7 +49,7 @@ public class MainCardGameV3 {
 			killedPlayers = 0;
 			turnCount = 0; //resetting the turn counter
 			Deck.shuffle(); //shuffling for next hand
-			Table(numOfPlayers, Deck);
+			TableTop Table = TableTop(numOfPlayers, Deck);// = new TableTop(numOfPlayers, Deck); //makes a table object to store discards/burns/hidden
 			for (int i = 0; i <numOfPlayers; i++) //first card dealt to all players, plus shows scores
 			{
 				AllPlayers.get(i).getStartingCard(Deck);

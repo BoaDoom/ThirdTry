@@ -10,7 +10,7 @@ public class TableTop {
 	List<List<SingleCards>> playerDiscard = new ArrayList<List<SingleCards>>();// an array of arrays, each players discard pile. Player 1's third discard would be playerDiscard.get(0).get(2)...probably
 	SingleCards hiddenCard;
 	
-	public TableTop(int numOfPlayers, DeckOfCards Deck)
+	TableTop(int numOfPlayers, DeckOfCards Deck)
 	{
 		hiddenCard = Deck.dealCard(); //deals and stores hidden card
 		if (numOfPlayers == 2)
