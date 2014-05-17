@@ -4,6 +4,7 @@ package cardGameV3.Cards;
 import cardGameV3.DeckOfCards;
 import cardGameV3.Players;
 import cardGameV3.SingleCards;
+import cardGameV3.TableTop;
 
 public class Baron extends SingleCards{
 	
@@ -15,7 +16,7 @@ public class Baron extends SingleCards{
 		nameOfCard = "Baron";
 		descriptionOfCard = "This card is played on another player, it forces you to compare hands, highest card in their hand when played, wins, the loser is out of the round";
 	}
-	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
+	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck, TableTop Table)
 	{
 	if (AttackingPlayer.cardA.valueOfCard > DefendingPlayer.cardA.valueOfCard)
 	{

@@ -59,7 +59,7 @@ Deck.AllCards.get(i).valueOfCard will return the value of the card*/
 		}
 		return "UNKNOWN!!";
 	}
-	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
+	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck, TableTop Table)
 	{		
 		return 0;
 	}

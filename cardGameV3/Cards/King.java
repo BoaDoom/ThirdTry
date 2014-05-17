@@ -2,6 +2,7 @@ package cardGameV3.Cards;
 import cardGameV3.DeckOfCards;
 import cardGameV3.Players;
 import cardGameV3.SingleCards;
+import cardGameV3.TableTop;
 
 
 public class King extends SingleCards{
@@ -14,7 +15,7 @@ public class King extends SingleCards{
 		nameOfCard = "King";
 		descriptionOfCard = "This card is played on another player, it forces them to swap their current hand with yours";
 	}
-	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
+	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck, TableTop Table)
 	{
 		System.out.println("You've forced Player " + DefendingPlayer.playerName + " to swap his card with yours!\nYou've lost your " + nameThisCard(AttackingPlayer.cardA.valueOfCard)+ ", the " + AttackingPlayer.cardA.valueOfCard + 
 				 " to him and gained his " + nameThisCard(DefendingPlayer.cardA.valueOfCard)+ ", the " + DefendingPlayer.cardA.valueOfCard + "\npass to him so he can draw your card");

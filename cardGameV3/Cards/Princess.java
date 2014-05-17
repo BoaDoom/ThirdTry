@@ -4,6 +4,7 @@ import java.util.List;
 import cardGameV3.DeckOfCards;
 import cardGameV3.Players;
 import cardGameV3.SingleCards;
+import cardGameV3.TableTop;
 
 
 public class Princess extends SingleCards{
@@ -15,7 +16,7 @@ public class Princess extends SingleCards{
 		valueOfCard = 8;
 		descriptionOfCard = "This card has no playable ability. If at any point you are forced to discard her, you are immediately out of the round";
 	}
-	public int checkForAttack(List<Players> AllPlayers, int turnCount) //importing all players to check availability for attack with card ability
+	public int checkForAttack(List<Players> AllPlayers, int turnCount, TableTop Table) //importing all players to check availability for attack with card ability
 	{
 		System.out.println("The Princess has no attack, if you discard her and are out this round");
 		return 1;

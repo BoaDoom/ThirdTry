@@ -4,6 +4,7 @@ import java.util.List;
 import cardGameV3.Players;
 import cardGameV3.DeckOfCards;
 import cardGameV3.SingleCards;
+import cardGameV3.TableTop;
 
 public class Prince extends SingleCards{
 	
@@ -16,7 +17,7 @@ public class Prince extends SingleCards{
 		descriptionOfCard = "This card is played on another player or yourself, it forces the selected player to discard their current card and draw another right away";
 	}
 	
-	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck)
+	public int attackWithCard(Players AttackingPlayer, Players DefendingPlayer, DeckOfCards Deck, TableTop Table)
 	{
 		System.out.println("You've forced Player " + DefendingPlayer.playerName + " to discard his card!\nPress enter when ready and pass to him so he can draw a new card");
 		clearingTheScreen();
@@ -32,12 +33,15 @@ public class Prince extends SingleCards{
 		nonkeyboard.nextLine();
 		if (Deck.cardsDealt == DeckOfCards.cardCount - 1)
 		{
+			Table.addToDiscard((DefendingPlayer.playerName-1), DefendingPlayer.cardA); //adds their only card to discard pile
 			DefendingPlayer.princeDiscardContingency(Deck);
+			System.out.println("There was no more cards left in the deck, you pick up the last hidden card\nYou now have a " + nameThisCard(DefendingPlayer.cardA.valueOfCard) + ", a " + DefendingPlayer.cardA.valueOfCard);
 			return 0;
 		}
 		else
 		{
-		DefendingPlayer.getStartingCard(Deck);
+		Table.addToDiscard((DefendingPlayer.playerName-1), DefendingPlayer.cardA); ////adds their only card to discard pile
+		DefendingPlayer.getStartingCard(Deck); //gets a new single card
 		System.out.println("You now have a " + nameThisCard(DefendingPlayer.cardA.valueOfCard) + ", a " + DefendingPlayer.cardA.valueOfCard);
 		return 0;
 		}
